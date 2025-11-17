@@ -1,96 +1,36 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <title>访问提示</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>请在浏览器中打开</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .container {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-        }
-        .icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-        p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s;
-        }
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-        .tips {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #999;
-        }
+        body { font-family: -apple-system, sans-serif; padding: 20px; text-align: center; }
+        .btn { display: inline-block; padding: 12px 24px; background: #07c160; color: white; 
+               text-decoration: none; border-radius: 6px; margin: 10px; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="icon">🔗</div>
-        <h1>请在浏览器中打开</h1>
-        <p>由于微信限制，当前页面无法直接访问。</p >
-        <p>请点击下方按钮，在手机浏览器中继续访问。</p >
-        
-        <a href=" " class="btn" id="openBtn">在浏览器中打开</a >
-        
-        <div class="tips">
-            <p>如果无法自动跳转，请复制链接到浏览器：</p >
-            <p style="color: #333; font-size: 10px; word-break: break-all;">https://bb.wb520.cc</p >
-        </div>
+    <h2>访问提示</h2>
+    <p>由于网络限制，部分用户可能无法直接访问</p >
+    
+    <a href=" " class="btn">尝试直接访问</a >
+    <a href="https://www.baidu.com" class="btn">测试网络连通性</a >
+    
+    <div style="margin-top: 30px;">
+        <p>如果无法访问，请尝试：</p >
+        <p>1. 切换网络（WiFi/4G/5G）</p >
+        <p>2. 使用代理或VPN</p >
+        <p>3. 联系网站管理员</p >
     </div>
 
     <script>
-        // 检测是否在微信内
-        function isWeixin() {
-            var ua = navigator.userAgent.toLowerCase();
-            return ua.indexOf('micromessenger') !== -1;
-        }
-        
-        // 显示相应的提示
-        if (isWeixin()) {
-            // 在微信内，显示引导页（已经是当前页面）
-            document.getElementById('openBtn').onclick = function(e) {
-                e.preventDefault();
-                alert('请点击右上角菜单，选择"在浏览器中打开"');
-            };
-        } else {
-            // 不在微信内，直接跳转
-            window.location.href = "https://bb.wb520.cc";
-        }
+        // 自动检测并显示网络状态
+        fetch('https://bb.wb520.cc', { mode: 'no-cors' })
+            .then(() => console.log('网站可访问'))
+            .catch(() => {
+                document.body.innerHTML += '<p style="color:red;">检测到网络访问限制</p >';
+            });
     </script>
 </body>
 </html>
