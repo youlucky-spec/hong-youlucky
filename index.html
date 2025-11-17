@@ -3,18 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>正在跳转...</title>
-    <script>
-        // 方式一：直接跳转（推荐，简单直接）
-        window.location.href = "https://bb.wb520.cc";
-
-        // 方式二：延迟3秒跳转，并显示提示信息（如果需要可以取消注释）
-        // setTimeout(function() {
-        //     window.location.href = "https://bb.wb520.cc";
-        // }, 3000);
-    </script>
+    <title>请在浏览器中打开</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .tips {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
 </head>
 <body>
-    <p>如果页面没有自动跳转，请 <a href=" ">点击这里</a >。</p >
+    <div class="container">
+        <div class="icon">🔗</div>
+        <h1>请在浏览器中打开</h1>
+        <p>由于微信限制，当前页面无法直接访问。</p >
+        <p>请点击下方按钮，在手机浏览器中继续访问。</p >
+        
+        <a href=" " class="btn" id="openBtn">在浏览器中打开</a >
+        
+        <div class="tips">
+            <p>如果无法自动跳转，请复制链接到浏览器：</p >
+            <p style="color: #333; font-size: 10px; word-break: break-all;">https://bb.wb520.cc</p >
+        </div>
+    </div>
+
+    <script>
+        // 检测是否在微信内
+        function isWeixin() {
+            var ua = navigator.userAgent.toLowerCase();
+            return ua.indexOf('micromessenger') !== -1;
+        }
+        
+        // 显示相应的提示
+        if (isWeixin()) {
+            // 在微信内，显示引导页（已经是当前页面）
+            document.getElementById('openBtn').onclick = function(e) {
+                e.preventDefault();
+                alert('请点击右上角菜单，选择"在浏览器中打开"');
+            };
+        } else {
+            // 不在微信内，直接跳转
+            window.location.href = "https://bb.wb520.cc";
+        }
+    </script>
 </body>
 </html>
