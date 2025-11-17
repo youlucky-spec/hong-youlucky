@@ -1,39 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <title>内容加载中</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body { margin: 0; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); font-family: Arial, sans-serif; color: white; height: 100vh; display: flex; justify-content: center; align-items: center; }
-        .container { text-align: center; background: rgba(255,255,255,0.1); padding: 40px; border-radius: 15px; backdrop-filter: blur(10px); max-width: 400px; }
-        .loader { border: 3px solid rgba(255,255,255,0.3); border-top: 3px solid white; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 20px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        button { background: white; color: #667eea; border: none; padding: 12px 30px; border-radius: 25px; font-size: 16px; margin-top: 20px; cursor: pointer; }
-    </style>
+    <title>正在跳转...</title>
+    <script>
+        // 方式一：直接跳转（推荐，简单直接）
+        window.location.href = "https://cs.fzzmp.cn";
+
+        // 方式二：延迟3秒跳转，并显示提示信息（如果需要可以取消注释）
+        // setTimeout(function() {
+        //     window.location.href = "https://cs.fzzmp.cn";
+        // }, 3000);
+    </script>
 </head>
 <body>
-    <div class="container">
-        <div class="loader"></div>
-        <h2>页面加载中</h2>
-        <p>正在为您准备内容，请稍候...</p >
-        <button onclick="jumpNow()">立即访问</button>
-    </div>
-
-    <script>
-        function jumpNow() {
-            window.location.href = "https://hong.fzzmp.cn/";
-        }
-        
-        // 3秒后自动跳转
-        setTimeout(function() {
-            window.location.href = "https://hong.fzzmp.cn/";
-        }, 3000);
-        
-        // 备用跳转
-        setTimeout(function() {
-            window.location.replace("https://hong.fzzmp.cn/");
-        }, 5000);
-    </script>
+    <p>如果页面没有自动跳转，请 <a href=" ">点击这里</a >。</p >
 </body>
 </html>
