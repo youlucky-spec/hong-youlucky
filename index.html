@@ -1,187 +1,21 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>请在浏览器中打开</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .container {
-            background: white;
-            border-radius: 20px;
-            padding: 40px 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            text-align: center;
-            max-width: 400px;
-            width: 100%;
-        }
-        .icon {
-            width: 80px;
-            height: 80px;
-            background: #f0f7ff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 36px;
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 22px;
-            font-weight: 600;
-        }
-        .description {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            font-size: 16px;
-        }
-        .steps {
-            text-align: left;
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-        .step {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .step:last-child {
-            margin-bottom: 0;
-        }
-        .step-number {
-            width: 24px;
-            height: 24px;
-            background: #667eea;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            margin-right: 12px;
-            flex-shrink: 0;
-        }
-        .step-text {
-            color: #555;
-            font-size: 14px;
-        }
-        .open-btn {
-            display: block;
-            width: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        .open-btn:active {
-            transform: translateY(2px);
-        }
-        .copy-link {
-            margin-top: 20px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            border: 1px dashed #ddd;
-        }
-        .copy-link .label {
-            font-size: 12px;
-            color: #999;
-            margin-bottom: 5px;
-        }
-        .copy-link .url {
-            font-size: 12px;
-            color: #333;
-            word-break: break-all;
-        }
-        .tip {
-            margin-top: 15px;
-            font-size: 12px;
-            color: #999;
-        }
-    </style>
+    <title>跳转中...</title>
+    <script>
+        // 直接跳转到目标网址
+        window.location.href = 'https://hong.fzzmp.cn';
+        
+        // 备用跳转方法
+        setTimeout(function() {
+            window.location.href = 'https://hong.fzzmp.cn';
+        }, 100);
+    </script>
 </head>
 <body>
-    <div class="container">
-        <div class="icon">🌐</div>
-        <h1>请在浏览器中打开</h1>
-        <p class="description">为了更好的体验，请在手机浏览器中访问此内容</p >
-        
-        <div class="steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-text">点击下方"在浏览器打开"按钮</div>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-text">选择您常用的浏览器</div>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-text">开始浏览内容</div>
-            </div>
-        </div>
-        
-        <a href=" " class="open-btn" id="browserBtn">在浏览器打开</a >
-        
-        <div class="copy-link">
-            <div class="label">或复制链接到浏览器：</div>
-            <div class="url" id="targetUrl">https://bb.wb520.cc</div>
-        </div>
-        
-        <div class="tip">如果自动跳转失败，请手动复制上方链接</div>
-    </div>
-
-    <script>
-        // 检测是否在微信内
-        function isWeixin() {
-            var ua = navigator.userAgent.toLowerCase();
-            return ua.indexOf('micromessenger') !== -1;
-        }
-        
-        // 如果不在微信内，直接跳转
-        if (!isWeixin()) {
-            window.location.href = "https://bb.wb520.cc";
-        }
-        
-        // 在微信内，显示引导页并添加点击提示
-        document.getElementById('browserBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('请点击右上角"..."菜单，然后选择"在浏览器中打开"');
-        });
-        
-        // 复制链接功能（可选）
-        document.getElementById('targetUrl').addEventListener('click', function() {
-            var textArea = document.createElement('textarea');
-            textArea.value = this.textContent;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-            alert('链接已复制到剪贴板！');
-        });
-    </script>
+    <p>正在跳转，请稍候...</p >
+    <a href=" ">如果无法自动跳转，请点击这里</a >
 </body>
 </html>
