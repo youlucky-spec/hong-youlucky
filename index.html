@@ -1,10 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hong Youlucky</title>
+    <meta charset="utf-8">
+    <title>重定向页面</title>
+    <script>
+        // 获取URL参数中的c值（Base64编码的链接）
+        function getParameterByName(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+        
+        // 页面加载时执行重定向
+        window.onload = function() {
+            const encodedUrl = getParameterByName('c');
+            
+            if (encodedUrl) {
+                try {
+                    // Base64解码
+                    const targetUrl = atob(encodedUrl);
+                    
+                    // 验证是否是有效的URL
+                    if (targetUrl.startsWith('http://') || targetUrl.startsWith('https://')) {
+                        // 跳转到目标链接
+                        window.location.href = targetUrl;
+                    } else {
+                        document.body.innerHTML = '<h1>无效的链接参数</h1>';
+                    }
+                } catch (e) {
+                    document.body.innerHTML = '<h1>链接参数解码错误</h1>';
+                }
+            } else {
+                document.body.innerHTML = '<h1>缺少链接参数</h1>';
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>Welcome to Hong Youlucky</h1>
-    <p>链接生成器服务</p >
+    <p>正在跳转...</p >
 </body>
 </html>
